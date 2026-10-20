@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#86bcb3">
+  <meta name="description" content="Dagoth Angels is a little community project helping people support sea turtle rescue, rehabilitation, and conservation.">
+  <title>Dagoth Angels for Sea Turtles 🐢</title>
+  <!-- Comic Sans MS on systems that have it; Comic Neue on phones without it. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#263c3e; --paper:#fffcf0; --paper-dark:#f7eddc; --sea:#289c9a; --sea-dark:#137c7a; --mint:#b6e4bd; --aqua:#60d5cf; --orange:#ffb77e; --orange-dark:#e76d65; --yellow:#ffe07c; --lime:#b7e459; --lav:#ccb4f9; --shade:#64716e; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; padding:22px; background:#869392; color:var(--ink); font-family:"Comic Sans MS","Comic Neue","Chalkboard SE","Trebuchet MS",sans-serif; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    a { color:var(--sea-dark); }
+    button { cursor:pointer; font:inherit; }
+    button:focus-visible,a:focus-visible { outline:3px dashed #aa4c7a; outline-offset:5px; }
+    .paper { position:relative; overflow:hidden; min-height:calc(100vh - 44px); max-width:1380px; margin:0 auto; padding:22px clamp(18px,3.4vw,56px) 22px; isolation:isolate; background:var(--paper); box-shadow:0 0 0 11px #fdfaf4,0 0 0 15px #596e6b,0 16px 44px #344f4b60; }
+    .paper::before { content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(circle at 13% 16%,#ffe9c6b0,transparent 22%),radial-gradient(circle at 88% 77%,#adf2df48,transparent 26%),repeating-linear-gradient(2deg,transparent 0px,transparent 30px,#aa90630a 31px,transparent 32px); opacity:.88; }
+    .topline { display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:14px; font-weight:700; letter-spacing:.02em; }
+    .small-brand { display:flex; align-items:center; gap:10px; }
+    .seal { display:grid; place-items:center; width:48px;height:47px; border-radius:54% 43% 49% 45%; background:#c4ede2; border:3px solid var(--sea-dark); box-shadow:3px 3px 0 #f2c77a; transform:rotate(-9deg); font-size:24px; }
+    .tiny-note { font-family:"MS Gothic","MS PGothic","NanumGothicCoding",monospace; color:#526866; font-size:12px; text-align:right; }
+    .intro { text-align:center; margin:20px auto 0; max-width:850px; position:relative; z-index:1; }
+    .stars { position:absolute; left:7%; top:23px; color:#e58e68; font-size:36px; transform:rotate(-17deg); }
+    .intro h1 { font-size:clamp(50px,6.5vw,96px); line-height:.98; letter-spacing:-.055em; margin:0; font-weight:700; text-shadow:2px 3px 0 #fff,4px 5px 0 #c4e8b7; }
+    .intro h1 .angel { color:var(--sea-dark); }
+    .subheading { display:inline-block; margin:13px auto 12px; padding:7px 22px 6px; background:var(--yellow); border:2px dashed #e8a65a; transform:rotate(-2deg); font-family:"MS Gothic","MS PGothic","NanumGothicCoding",monospace; font-size:clamp(13px,1.65vw,18px); font-weight:700; letter-spacing:.06em; }
+    .intro p { margin:8px auto 0; font-size:clamp(20px,2.35vw,30px); font-weight:700; line-height:1.3; }
+    .intro p span { text-decoration:underline; text-decoration-style:wavy; text-decoration-color:var(--orange-dark); text-decoration-thickness:3px; text-underline-offset:7px; }
+    .main-scene { position:relative; display:grid; grid-template-columns:minmax(160px,1fr) minmax(320px,1.45fr) minmax(230px,1fr); gap:clamp(5px,1vw,18px); align-items:center; min-height:415px; margin:8px 0 0; }
+    .sidebar { align-self:end; margin-bottom:18px; max-width:295px; transform:rotate(-3deg); }
+    .card-sketch { padding:22px 19px; background:#f1f6e7; border:3px solid var(--sea-dark); border-radius:20px 27px 18px 29px; box-shadow:6px 6px 0 #d3bce9; }
+    .card-sketch h2 { margin:8px 0 6px; font-size:26px; line-height:1.1; }
+    .card-sketch p { font-size:16px; line-height:1.35; margin:8px 0 12px; }
+    .discord-mark { font-size:38px; line-height:1; }
+    .join-label { display:inline-block; padding:9px 12px; border:2px dashed #7c74ae; border-radius:9px; background:#ece6ff; font-size:14px; font-weight:700; color:#53506c; }
+    .donate-spot { text-align:center; position:relative; z-index:2; justify-self:center; align-self:center; padding-top:8px; }
+    .hand-note { color:#5e7d79; font-family:"MS Gothic","MS PGothic","NanumGothicCoding",monospace; font-size:13px; font-weight:700; letter-spacing:.08em; transform:rotate(-5deg); margin:0 0 18px; }
+    .donate-button { position:relative; display:grid; place-items:center; width:clamp(235px,23vw,318px); height:clamp(155px,17vw,220px); border:4px solid #9f584b; border-radius:54% 47% 53% 44% / 47% 57% 44% 56%; transform:rotate(-4deg); background:#ffb87e; color:#263c3e; box-shadow:8px 9px 0 #f5d875,12px 14px 0 #e8e6c0; transition:transform .18s,box-shadow .18s; }
+    .donate-button::before { content:""; position:absolute; inset:7px; border:3px dashed #fce6ae; border-radius:48% 53% 45% 52%; pointer-events:none; }
+    .donate-button::after { content:"✳"; position:absolute; color:#e66f70; right:12px; top:-44px; font-size:37px; transform:rotate(14deg); }
+    .donate-button:hover { transform:translateY(-4px) rotate(-1deg) scale(1.025); box-shadow:8px 12px 0 #f5d875,12px 17px 0 #e8e6c0; }
+    .donate-button:active { transform:translateY(3px) rotate(0deg); }
+    .donate-button strong { display:block; font-size:clamp(43px,5vw,64px); line-height:1; letter-spacing:.015em; transform:rotate(4deg); }
+    .donate-button small { display:block; margin-top:4px; font-size:16px; font-weight:700; transform:rotate(4deg); }
+    .donate-caption { margin:26px auto 0; max-width:360px; line-height:1.35; font-size:15px; font-family:"MS Gothic","MS PGothic","NanumGothicCoding",monospace; color:#516c68; }
+    .doodle-area { position:relative; min-height:390px; align-self:center; }
+    .doodle-svg { width:100%; height:395px; overflow:visible; transform:translate(0,-5px); }
+    .doodle-caption { position:absolute; bottom:3px; right:0; text-align:center; font-size:15px; color:var(--sea-dark); font-weight:700; transform:rotate(7deg); }
+    .turtle-path { stroke-linejoin:round; stroke-linecap:round; }
+    .about-wrap { position:relative; max-width:900px; margin:-8px auto 0; z-index:3; }
+    .about-paper { background:#fffaf0; border:3px solid #e5b88c; border-radius:37px 23px 33px 21px; padding:19px clamp(15px,3vw,40px) 24px; box-shadow:7px 7px 0 #b4ded2; transform:rotate(-.3deg); }
+    .about-top { display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .about-heading { font-size:clamp(25px,3.1vw,36px); line-height:1.1; margin:0; }
+    .change-button { background:#fff1b6; color:var(--ink); padding:9px 14px; border-radius:13px 9px 17px 9px; border:2px dashed #ba8a55; font-size:14px; font-weight:700; }
+    .about-title { margin:14px 0 6px; color:#227b79; font-size:17px; font-weight:700; font-family:"MS Gothic","MS PGothic","NanumGothicCoding",monospace; }
+    .about-content { white-space:pre-line; font-size:clamp(18px,2vw,25px); line-height:1.45; margin:0; min-height:95px; }
+    .about-footer { margin:16px 0 0; padding-top:14px; border-top:2px dashed #dfd3bd; font-size:13px; line-height:1.4; color:#516a65; font-family:"MS Gothic","MS PGothic","NanumGothicCoding",monospace; }
+    .lower { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 22px; margin:26px auto 5px; max-width:1080px; font-size:14px; }
+    .email { font-family:"MS Gothic","MS PGothic","NanumGothicCoding",monospace; font-size:clamp(15px,1.6vw,21px); font-weight:700; }
+    .pending { display:inline-block; margin-left:8px; padding:3px 7px; border-radius:9px; color:#825c48; background:#fff0c8; font-size:11px; vertical-align:middle; }
+    .footer-flowers { color:#6db6a2; font-size:22px; letter-spacing:.18em; white-space:nowrap; }
+    .bottom-note { margin:15px auto 2px; max-width:1080px; font-size:12px; color:#61706c; line-height:1.5; text-align:center; }
+    .bottom-note a { font-weight:700; }
+
+    /* Live fundraising tracker, drawn as one more colorful note. */
+    .progress-area { max-width:810px; margin:0 auto 26px; padding:0 8px; }
+    .progress-card { position:relative; padding:20px clamp(14px,3vw,31px) 25px; border:3px dashed #76a4b2; border-radius:22px 28px 18px 29px; background:#f8f1ff; box-shadow:7px 7px 0 #d4efc4; transform:rotate(.35deg); text-align:center; }
+    .progress-card::after { content:"✳"; position:absolute; right:21px; top:-24px; color:#e59c69; font-size:38px; transform:rotate(15deg); pointer-events:none; }
+    .progress-title { margin:0 0 6px; font-size:clamp(24px,3vw,34px); line-height:1.25; }
+    .progress-caption { margin:0 auto 17px; max-width:650px; font-size:14px; line-height:1.5; font-family:"MS Gothic","MS PGothic",monospace; color:#576d69; }
+    .plg-goal { max-width:690px; margin:0 auto; min-height:24px; }
+
+    .pledge-fallback { display:block; max-width:300px; margin:12px auto 0; font-size:12px; line-height:1.45; color:#137c7a; }
+    .pledge-area { max-width:900px; padding:5px 8px 20px; margin:0 auto 9px; }
+    .pledge-card { background:#e9faf2; border:3px dashed #73b4a6; border-radius:27px 20px 29px 19px; padding:clamp(18px,3vw,32px); box-shadow:5px 6px 0 #f6d895; text-align:center; }
+    .pledge-kicker { font-family:"MS Gothic","MS PGothic",monospace; font-size:12px; font-weight:bold; color:#297570; letter-spacing:.12em; }
+    .pledge-card h2 { font-size:clamp(25px,3vw,38px); margin:9px 0 12px; }
+    .pledge-explainer { max-width:640px; margin:0 auto 14px; line-height:1.55; font-size:16px; }
+    .beneficiaries { display:flex; flex-wrap:wrap; justify-content:center; gap:9px; padding:0; margin:15px 0 13px; list-style:none; }
+    .beneficiaries li { border:2px solid #85b3ab; border-radius:11px 15px 11px 14px; background:#fffdf6; padding:9px 12px; font-size:14px; font-weight:700; }
+    .beneficiaries small { display:block; font-size:11px; font-weight:400; }
+    .beneficiary-note { max-width:670px; margin:9px auto 17px; color:#5c6d64; font-size:12px; line-height:1.5; }
+    .plg-donate-mini { max-width:640px; margin:0 auto; }
+    .pledge-notice { max-width:650px; margin:16px auto 0; font-family:"MS Gothic","MS PGothic",monospace; font-size:12px; color:#4f6965; line-height:1.55; }
+    .pledge-notice a { font-weight:700; }
+    /* Real on-site pop-up: clicking the crayon button never navigates away. */
+    .donation-overlay { position:fixed; inset:0; z-index:999; display:flex; justify-content:center; align-items:center; padding:clamp(8px,2vw,28px); background:rgba(24,47,50,.75); visibility:hidden; opacity:0; pointer-events:none; transition:opacity .18s ease,visibility .18s ease; }
+    .donation-overlay.is-open { visibility:visible; opacity:1; pointer-events:auto; }
+    .donation-dialog { position:relative; width:min(100%,720px); max-height:calc(100dvh - 24px); overflow:auto; overscroll-behavior:contain; border:4px solid #196a68; border-radius:24px 29px 23px 25px; background:var(--paper); box-shadow:10px 11px 0 #d1baef,0 0 0 3px #fff; padding:clamp(18px,4vw,36px) clamp(12px,4vw,32px) 24px; text-align:center; color:var(--ink); }
+    .donation-dialog h2 { margin:7px 30px 8px; font-size:clamp(26px,4vw,40px); }
+    .dialog-close { position:sticky; float:right; top:0; z-index:3; width:46px; height:46px; display:grid; place-items:center; border:3px solid #bc8474; border-radius:50%; background:#fff4d4; color:#344e4f; font-size:30px; line-height:1; box-shadow:2px 2px 0 #ecc7ae; }
+    .dialog-close:hover { background:#ffe8a0; }
+    .pledge-form-wrapper { width:min(100%,610px); min-height:325px; margin:16px auto 7px; }
+    .pledge-form-wrapper .plg-donate { width:100%; min-height:300px; }
+    body.modal-open { overflow:hidden; }
+    @media(max-width:590px) { .donation-overlay { padding:8px; align-items:center; } .donation-dialog { max-height:calc(100dvh - 16px); border-width:3px; padding:14px 12px 22px; } .donation-dialog h2 { margin-left:14px; margin-right:14px; } .dialog-close { width:42px; height:42px; } }
+    @media(max-width:860px) { .paper { padding:20px 24px; } .main-scene { grid-template-columns:1fr 1.3fr; gap:10px; min-height:395px; } .doodle-area { position:absolute; right:0; top:8px; width:30%; z-index:0; opacity:.65; pointer-events:none; } .sidebar { grid-column:1; grid-row:1; align-self:end; z-index:2; } .donate-spot { grid-column:2; grid-row:1; } .donate-button { width:250px; height:174px; } .doodle-caption { display:none; } .card-sketch { max-width:280px; } }
+    @media(max-width:590px) { body { padding:10px; } .paper { padding:14px 15px 22px; min-height:calc(100vh - 20px); box-shadow:0 0 0 6px #fdfaf4,0 0 0 8px #596e6b,0 10px 28px #344f4b60; } .topline { font-size:12px; } .seal { width:40px;height:40px;font-size:20px; } .tiny-note { max-width:165px;font-size:10px; } .intro { margin-top:36px; } .stars { top:-37px;left:9%;font-size:30px; } .intro h1 { font-size:clamp(48px,12vw,73px); } .subheading { margin:14px auto 12px; } .intro p { font-size:22px; max-width:310px; } .main-scene { display:flex; flex-direction:column; gap:9px; margin:0; min-height:unset; } .donate-spot { order:1; margin:40px 0 15px; padding:0; } .donate-button { width:min(78vw,290px); height:187px; } .donate-button strong { font-size:54px; } .doodle-area { order:2; position:relative; inset:auto; width:min(78vw,300px); height:220px; min-height:unset; opacity:1; margin:-17px auto -25px; } .doodle-svg { height:230px; transform:rotate(78deg) scale(.84); } .sidebar { order:3; align-self:stretch; width:100%; max-width:400px; margin:10px auto 24px; transform:rotate(-1.2deg); } .card-sketch { max-width:none; padding:17px 18px; } .card-sketch h2 { font-size:24px; } .card-sketch p { font-size:15px; } .about-wrap { margin:0 auto; } .about-paper { padding:18px 16px 22px; } .about-content { font-size:19px; min-height:112px; } .change-button { font-size:13px; } .lower { margin-top:24px; justify-content:center; text-align:center; } .email { font-size:16px; } .footer-flowers { width:100%; } .bottom-note { font-size:12px; } }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+  <!-- Pledge handles payment entry and receipts. Load after parsing so the embed can find both widgets. -->
+  <script src="https://www.pledge.to/embed/widget.js" defer></script>
+</head>
+<body>
+  <main class="paper" id="top">
+    <header class="topline">
+      <div class="small-brand"><span class="seal" aria-hidden="true">🐢</span><span>little flippers, big feelings</span></div>
+      <span class="tiny-note">a community project for sea turtles ✳</span>
+    </header>
+
+    <section class="intro" aria-labelledby="site-title">
+      <span class="stars" aria-hidden="true">✳</span>
+      <h1 id="site-title">Dagoth <span class="angel">Angels</span></h1>
+      <div class="subheading">FOR SEA TURTLES</div>
+      <p>Let's get together and <span>help baby turtles.</span></p>
+    </section>
+
+    <section class="main-scene" aria-label="Help the turtles and join our community">
+      <aside class="sidebar">
+        <div class="card-sketch">
+          <div class="discord-mark" aria-hidden="true">✉ ✳</div>
+          <h2>Our Discord<br>little turtle club</h2>
+          <p>Come hang out, share your art, and cheer on the tiniest ocean travelers.</p>
+          <span class="join-label">✦ Invite coming soon</span>
+        </div>
+      </aside>
+
+      <div class="donate-spot">
+        <p class="hand-note">✦ YOU CAN HELP RIGHT HERE ✦</p>
+        <button id="donateButton" class="donate-button" type="button" aria-haspopup="dialog" aria-controls="donationDialog" aria-label="Open secure donation form on this page">
+          <span><strong>DONATE!</strong><small>for the little flippers ♡</small></span>
+        </button>
+        <p class="donate-caption">Give here in a secure Pledge donation window.<br>Dagoth Angels never touches your donation.</p>
+        <a class="pledge-fallback" href="https://www.pledge.to/dagoth-angels-for-sea-turtles" target="_blank" rel="noopener noreferrer">Having trouble with the donation button? Open the secure Pledge page ↗</a>
+      </div>
+
+      <div class="doodle-area" aria-hidden="true">
+        <svg class="doodle-svg" viewBox="0 0 350 410" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="crayon" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="7" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          </defs>
+          <g filter="url(#crayon)" stroke-linecap="round" stroke-linejoin="round" opacity=".93">
+            <path d="M45 48C114 95 281 76 194 132 88 194 330 199 149 255 34 296 288 294 246 355" stroke="#b2e838" stroke-width="10"/>
+            <path d="M92 35C39 105 300 123 213 169 85 236 296 253 162 301 119 319 278 360 224 395" stroke="#ffad78" stroke-width="9"/>
+            <path d="M24 143C119 130 313 171 177 212 31 253 309 260 151 315 78 344 252 366 197 400" stroke="#31ddcd" stroke-width="10"/>
+            <path d="M85 132C224 148 249 190 109 238 26 269 290 290 187 340 139 367 217 394 250 396" stroke="#61c6ba" stroke-width="10"/>
+            <path d="M155 10C128 97 346 156 226 215 109 273 317 307 240 374" stroke="#ffe572" stroke-width="11"/>
+          </g>
+          <g transform="translate(164 194) rotate(-15)" stroke="#23736f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+            <ellipse cx="0" cy="0" rx="49" ry="39" fill="#b7e89b"/>
+            <path d="M-37-13Q-7-42 35-11Q48 17 10 31Q-25 28-37-13Z" fill="#75cfae"/>
+            <path d="M-37-13Q-1 11 35-11M0-25Q-16 0 10 31M-21-27L-9-3L-31 17M20-23L11 6L32 20" fill="none" stroke="#388b7f" stroke-width="3"/>
+            <path d="M-35-22L-72-37Q-89-26-66-12L-46 0M28-27L56-45Q81-42 61-12L43-7M-27 23L-55 47Q-76 52-61 22L-42 10M30 19L57 44Q78 46 61 18L44 4" fill="#b7e89b"/>
+            <ellipse cx="60" cy="0" rx="19" ry="18" fill="#b7e89b"/>
+            <circle cx="67" cy="-7" r="2.5" fill="#263c3e" stroke="none"/>
+            <path d="M67 6Q61 11 56 6" stroke-width="2"/>
+          </g>
+          <path d="M65 360q22-15 42 1m-12-23v45M279 37l22-17m-12 31 30-1" stroke="#f7b268" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <div class="doodle-caption">a very tiny ocean hero ♡</div>
+      </div>
+    </section>
+
+    <!-- Live totals supplied by Pledge. Keep the widget script in <head> (load it once only). -->
+    <section class="progress-area" aria-labelledby="progress-heading">
+      <div class="progress-card">
+        <h2 class="progress-title" id="progress-heading">Look what our little flippers can do! ♡</h2>
+        <p class="progress-caption">Live fundraising progress, updated by Pledge. Thank you for helping sea turtles!</p>
+        <!-- The progress tracker deliberately has no outbound Donate link. -->
+        <div class="plg-goal" data-partner-key="41a6174c3f4adb4e7ca6022933a0fc8e" data-item-id="a9ec33b7e61e28c85952fa640436ef9b"></div>
+      </div>
+    </section>
+
+    <section class="about-wrap" aria-labelledby="about-heading">
+      <div class="about-paper">
+        <div class="about-top">
+          <h2 id="about-heading" class="about-heading">About us ♡</h2>
+          <button class="change-button" id="changeAbout" type="button" aria-label="Read the next note about Dagoth Angels">another little note ↻</button>
+        </div>
+        <p id="aboutTitle" class="about-title">A little note from Dagoth Angels:</p>
+        <p id="aboutText" class="about-content" aria-live="polite">Come donor, friend or turtle, come!
+Through fire and flame, come!
+Let's get turtles clean and into the ocean. 🐢</p>
+        <p class="about-footer">We're an independent community fundraising project, not a registered charity or an official partner of the supported organizations. Pledge processes donations for the selected nonprofits and provides donor receipts. Dagoth Angels does not receive or hold the funds.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="lower">
+        <a class="email" href="mailto:voryn@dagothangels.org">✉ voryn@dagothangels.org</a>
+        <span class="footer-flowers" aria-hidden="true">✳ ♡ ✳ 🐢 ✳</span>
+      </div>
+      <p class="bottom-note">Made with love for sea turtles. An independent community fundraiser, not affiliated with the beneficiary organizations or Bethesda. © Dagoth Angels.</p>
+    </footer>
+  </main>
+
+  <!-- This is a first-party modal containing Pledge's full *inline* donation form. -->
+  <div class="donation-overlay" id="donationOverlay" aria-hidden="true">
+    <div class="donation-dialog" id="donationDialog" role="dialog" aria-modal="true" aria-labelledby="pledge-heading" tabindex="-1">
+      <button type="button" class="dialog-close" id="closeDonation" aria-label="Close donation window">×</button>
+      <div class="pledge-kicker">✳ FOR THE LITTLE FLIPPERS ✳</div>
+      <h2 id="pledge-heading">Help a sea turtle! ♡</h2>
+      <p class="pledge-explainer">Donate securely here through Pledge. Dagoth Angels never receives your payment information or donations.</p>
+      <div class="pledge-form-wrapper">
+        <!-- FULL EMBED: plg-donate is the official inline form. Do not use plg-donate-mini or data-plg-action here. -->
+        <div class="plg-donate" data-widget-id="FWRZiVvZ5jdbN4Y3"></div>
+      </div>
+      <p class="beneficiary-note">Supporting SEE Turtles, Sea Turtle Conservancy, Sea Turtle Recovery, and Jekyll Island Foundation. Verify each organization's allocation and any Georgia Sea Turtle Center designation in Pledge before promoting the campaign.</p>
+      <p class="pledge-notice">Pledge processes donations and sends receipts. If the embedded form does not load, <a href="https://www.pledge.to/dagoth-angels-for-sea-turtles" target="_blank" rel="noopener noreferrer">open Pledge's secure giving page</a>.</p>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const notes = [
+        { title: 'A little note from Dagoth Angels:', text: 'Come donor, friend or turtle, come!\nThrough fire and flame, come!\nLet\'s get turtles clean and into the ocean. 🐢' },
+        { title: 'Why are we here?', text: 'Because tiny flippers deserve a fighting chance. ♡\nA turtle doesn’t care whether you’re rich or poor. It just wants to reach the ocean. Even $5 can help support conservation.' },
+        { title: 'Where do donations go?', text: 'To the four turtle-supporting nonprofits you have selected in the Pledge fundraiser.\nWe never hold your donation money or collect card details.' }
+      ];
+      const overlay = document.getElementById('donationOverlay');
+      const donateButton = document.getElementById('donateButton');
+      const closeButton = document.getElementById('closeDonation');
+      const dialog = document.getElementById('donationDialog');
+      let previousFocus = null;
+      function openDonation() {
+        previousFocus = document.activeElement;
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        closeButton.focus();
+      }
+      function closeDonation() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
+      }
+      donateButton.addEventListener('click', openDonation);
+      closeButton.addEventListener('click', closeDonation);
+      overlay.addEventListener('click', event => {
+        if (event.target === overlay) closeDonation();
+      });
+      document.addEventListener('keydown', event => {
+        if (!overlay.classList.contains('is-open')) return;
+        if (event.key === 'Escape') closeDonation();
+        if (event.key === 'Tab') {
+          // Keep keyboard focus inside the donation overlay.
+          const focusables = Array.from(dialog.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+            .filter(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden');
+          if (!focusables.length) { event.preventDefault(); dialog.focus(); return; }
+          const first = focusables[0], last = focusables[focusables.length - 1];
+          if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+          else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        }
+      });
+      let currentNote = 0;
+      document.getElementById('changeAbout').addEventListener('click', () => {
+        currentNote = (currentNote + 1) % notes.length;
+        document.getElementById('aboutTitle').textContent = notes[currentNote].title;
+        document.getElementById('aboutText').textContent = notes[currentNote].text;
+      });
+    })();
+  </script>
+</body>
+</html>
